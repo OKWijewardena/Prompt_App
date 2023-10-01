@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 const userModel = require("../models/user.model"); // Import your user model
+
 
 // Define routes here
 
@@ -21,9 +23,9 @@ router.post("/register", async (req, res) => {
   // User login
   router.post("/login", async (req, res) => {
     try {
-      const { email, password } = req.body;
+      const { email, password } = req.query; // Access data from query parameters
       // Check if the user exists in the database
-      const user = await userModel.findOne({ email });
+      const user = await userModel.find({ email });
       if (!user) {
         return res.status(401).json({ error: "User not found" });
       }
@@ -36,5 +38,6 @@ router.post("/register", async (req, res) => {
       res.status(500).json({ error: "Login failed" });
     }
   });
+  
 
 module.exports = router;

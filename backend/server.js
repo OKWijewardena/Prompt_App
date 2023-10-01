@@ -14,10 +14,11 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 //Database Connection
-const URL = process.env.MONGODB_URL;
+const URL = process.env.MONGO_URL;
 
 //routes
-app.use("/user", require("./routes/user.route"));
+app.use("/users", require("./routes/user.route"));
+app.use("/prompt", require("./routes/prompt.route"));
 
 //MongoDB configurations
 
