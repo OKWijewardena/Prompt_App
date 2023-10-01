@@ -17,7 +17,7 @@ app.use(express.json());
 const URL = process.env.MONGODB_URL;
 
 //routes
-// app.use("/stores", require("./routes/inventory.route"));
+app.use("/user", require("./routes/user.route"));
 
 //MongoDB configurations
 
