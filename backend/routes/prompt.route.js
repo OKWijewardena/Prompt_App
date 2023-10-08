@@ -5,9 +5,9 @@ const promptModel = require("../models/prompt.model"); // Import your prompt mod
 // Add a new prompt
 router.post("/add", async (req, res) => {
   try {
-    const { userID, content } = req.body;
+    const { userID, category ,content } = req.body;
     // Create a new prompt document in the database
-    const newPrompt = new promptModel({ userID, content });
+    const newPrompt = new promptModel({ userID, category, content });
     await newPrompt.save();
     res.status(201).json({ message: "Prompt added successfully", prompt: newPrompt });
   } catch (error) {

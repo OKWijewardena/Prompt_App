@@ -19,6 +19,9 @@ const URL = process.env.MONGO_URL;
 //routes
 app.use("/users", require("./routes/user.route"));
 app.use("/prompt", require("./routes/prompt.route"));
+app.use("/promptgene", require("./routes/promptgeneration"));
+app.use("/payment", require("./routes/payment.route"));
+
 
 //MongoDB configurations
 

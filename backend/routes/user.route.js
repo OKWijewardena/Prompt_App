@@ -29,15 +29,29 @@ router.post("/register", async (req, res) => {
       if (!user) {
         return res.status(401).json({ error: "User not found" });
       }
-      // Validate the password
-      if (user.password !== password) {
-        return res.status(401).json({ error: "Invalid password" });
+      else{
+        if (user.password !== password) {
+          return res.status(401).json({ error: "Invalid password" });
+        }else{
+          res.status(200).json({ message: "Login successful" });
+        }
       }
-      res.status(200).json({ message: "Login successful" });
+      // Validate the password
+      
     } catch (error) {
       res.status(500).json({ error: "Login failed" });
     }
   });
+
+  // Get all users
+router.get("/get", async (req, res) => {
+  try {
+    const users = await userModel.find();
+    res.status(200).json({ users });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
+});
   
 
 module.exports = router;

@@ -11,6 +11,10 @@ const promptSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    category: {
+        type: String,
+        require: true
+    },
     content: {
         type: String,
         required: true
